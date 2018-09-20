@@ -8,8 +8,8 @@ Names = [['./training-images','train'], ['./test-images','test']]
 
 for name in Names:
 	
-	data_image = array('B')
-	data_label = array('B')
+	data_image = array('l') # signed long
+	data_label = array('l') # signed long
 
 	FileList = []
 	for dirname in os.listdir(name[0])[1:]: # [1:] Excludes .DS_Store from Mac OS
@@ -40,7 +40,7 @@ for name in Names:
 
 	# header for label array
 
-	header = array('B')
+	header = array('l') # signed long
 	header.extend([0,0,8,1,0,0])
 	header.append(int('0x'+hexval[2:][:2],16))
 	header.append(int('0x'+hexval[2:][2:],16))
